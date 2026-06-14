@@ -86,13 +86,9 @@ CREATE TABLE Bookings (
 );
 
 
--- ============================================================
--- SECTION 2: DATA SEEDING — Insert Sample Records
--- ============================================================
 
--- ------------------------------------------------------------
--- 2.1 Insert Users
--- ------------------------------------------------------------
+-- Insert Users
+
 INSERT INTO Users (user_id, full_name, email, role, phone_number) VALUES
 (1, 'Tanvir Rahman', 'tanvir@mail.com', 'Football Fan',    '+8801711111111'),
 (2, 'Asif Haque',   'asif@mail.com',   'Football Fan',    '+8801722222222'),
@@ -100,9 +96,9 @@ INSERT INTO Users (user_id, full_name, email, role, phone_number) VALUES
 (4, 'Jannat Ara',   'jannat@mail.com', 'Football Fan',    NULL);
 
 
--- ------------------------------------------------------------
--- 2.2 Insert Matches
--- ------------------------------------------------------------
+
+-- Insert Matches
+
 INSERT INTO Matches (match_id, fixture, tournament_category, base_ticket_price, match_status) VALUES
 (101, 'Real Madrid vs Barcelona', 'Champions League', 150.00, 'Available'),
 (102, 'Man City vs Liverpool',    'Premier League',   120.00, 'Selling Fast'),
@@ -111,9 +107,8 @@ INSERT INTO Matches (match_id, fixture, tournament_category, base_ticket_price, 
 (105, 'Juventus vs Roma',         'Serie A',           80.00, 'Available');
 
 
--- ------------------------------------------------------------
--- 2.3 Insert Bookings
--- ------------------------------------------------------------
+-- Insert Bookings
+
 INSERT INTO Bookings (booking_id, user_id, match_id, seat_number, payment_status, total_cost) VALUES
 (501, 1, 101, 'A-12', 'Confirmed', 150.00),
 (502, 1, 102, 'B-04', 'Confirmed', 120.00),
@@ -122,14 +117,9 @@ INSERT INTO Bookings (booking_id, user_id, match_id, seat_number, payment_status
 (505, 3, 102, 'C-20', 'Pending',  120.00);
 
 
--- ============================================================
--- SECTION 3: SQL QUERIES WITH EXPECTED OUTPUT
--- ============================================================
 
--- ------------------------------------------------------------
 -- Query 1:
 -- Retrieve all upcoming matches belonging to 'Champions League'
--- where match_status is 'Available'.
 --
 -- Expected Output:
 -- match_id | fixture                  | base_ticket_price | match_status
