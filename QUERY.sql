@@ -151,8 +151,8 @@ SELECT user_id,
        full_name,
        email
 FROM   Users
-WHERE  full_name LIKE 'Tanvir%'
-   OR  LOWER(full_name) LIKE '%haque%';
+WHERE  full_name ILIKE 'Tanvir%'
+   OR  full_name ILIKE '%Haque%';
 
 
 -- ------------------------------------------------------------
@@ -204,25 +204,25 @@ ORDER  BY b.booking_id;
 -- ------------------------------------------------------------
 -- Query 5:
 -- Display a comprehensive list of all users and their
--- booking count & total spend (users with no bookings
--- must still appear with 0 count and NULL total).
+-- booking IDs, ensuring that users who have never made
+-- a booking are still included.
 --
 -- Expected Output:
--- user_id | full_name     | total_bookings | total_spend
--- --------+---------------+----------------+------------
--- 1       | Tanvir Rahman | 2              | 270.00
--- 2       | Asif Haque    | 2              | 300.00
--- 3       | Sajjad Rahman | 1              | 120.00
--- 4       | Jannat Ara    | 0              | NULL
+-- user_id | full_name     | booking_id
+-- --------+---------------+-----------
+-- 1       | Tanvir Rahman | 501
+-- 1       | Tanvir Rahman | 502
+-- 2       | Asif Haque    | 503
+-- 2       | Asif Haque    | 504
+-- 3       | Sajjad Rahman | 505
+-- 4       | Jannat Ara    | NULL
 -- ------------------------------------------------------------
 SELECT u.user_id,
        u.full_name,
-       COUNT(b.booking_id)  AS total_bookings,
-       SUM(b.total_cost)    AS total_spend
+       b.booking_id
 FROM   Users u
 LEFT JOIN Bookings b ON u.user_id = b.user_id
-GROUP  BY u.user_id, u.full_name
-ORDER  BY u.user_id;
+ORDER  BY u.user_id, b.booking_id;
 
 
 -- ------------------------------------------------------------
@@ -262,4 +262,5 @@ SELECT match_id,
        base_ticket_price
 FROM   Matches
 ORDER  BY base_ticket_price DESC
+OFFSET 1
 LIMIT  2;
