@@ -30,7 +30,7 @@ CREATE TABLE Users (
 
 
 
--- 1.2 Matches Table
+-- Matches Table Create
 
 CREATE TABLE Matches (
     match_id             INT            NOT NULL,
@@ -53,10 +53,8 @@ CREATE TABLE Matches (
 );
 
 
--- ------------------------------------------------------------
--- 1.3 Bookings Table
--- Records each ticket booking made by a user for a match.
--- ------------------------------------------------------------
+-- Bookings Table Create
+
 CREATE TABLE Bookings (
     booking_id     INT            NOT NULL,
     user_id        INT,
